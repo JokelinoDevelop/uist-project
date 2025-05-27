@@ -14,6 +14,7 @@ export default antfu(
   },
   {
     rules: {
+      "style/brace-style": ["off"],
       "style/arrow-parens": ["off"],
       "no-console": ["warn"],
       "antfu/no-top-level-await": ["off"],
