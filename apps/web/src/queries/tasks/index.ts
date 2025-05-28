@@ -1,4 +1,4 @@
-import type { IInsertTasks, IPatchTasks } from "@uist-project/api/schema";
+import type { IInsertTasks, IPatchTasks } from "@uist-project/api";
 
 import { queryOptions } from "@tanstack/react-query";
 
