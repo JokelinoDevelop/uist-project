@@ -3,37 +3,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-.error {
-  color: red;
-}
-
-.buttons {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: flex-end;
-}
-
-a[role="button"] {
-  margin-bottom: var(--pico-spacing);
-}
-
-.user-avatar {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-
-  img {
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-  }
-
-  p {
-    display: inline-block;
-    margin-bottom: 0;
-  }
-}
-
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);

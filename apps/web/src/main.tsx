@@ -5,7 +5,7 @@ import "./index.css";
 
 import { createRoot } from "react-dom/client";
 
-import queryClient from "@/web/lib/query-client";
+import queryClient from "@/lib/query-client";
 
 import App from "./app";
 

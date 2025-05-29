@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
+
     "paths": {
-      "@/web/*": ["./src/*"]
+      "@/web/*": ["./src/*"],
+      "@/*": ["./src/*"]
     }
   },
   "references": [
@@ -9,4 +11,5 @@
     { "path": "./tsconfig.node.json" }
   ],
   "files": []
+
 }

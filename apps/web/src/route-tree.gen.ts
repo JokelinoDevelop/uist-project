@@ -11,8 +11,8 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as TaskIndexImport } from './routes/task/index'
-import { Route as TaskIdIndexImport } from './routes/task/$id/index'
-import { Route as TaskIdEditImport } from './routes/task/$id/edit'
+import { Route as SignUpIndexImport } from './routes/sign-up/index'
+import { Route as LoginIndexImport } from './routes/login/index'
 
 // Create/Update Routes
 
@@ -28,15 +28,15 @@ const TaskIndexRoute = TaskIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const TaskIdIndexRoute = TaskIdIndexImport.update({
-  id: '/task/$id/',
-  path: '/task/$id/',
+const SignUpIndexRoute = SignUpIndexImport.update({
+  id: '/sign-up/',
+  path: '/sign-up/',
   getParentRoute: () => rootRoute,
 } as any)
 
-const TaskIdEditRoute = TaskIdEditImport.update({
-  id: '/task/$id/edit',
-  path: '/task/$id/edit',
+const LoginIndexRoute = LoginIndexImport.update({
+  id: '/login/',
+  path: '/login/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -51,25 +51,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/login/': {
+      id: '/login/'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/sign-up/': {
+      id: '/sign-up/'
+      path: '/sign-up'
+      fullPath: '/sign-up'
+      preLoaderRoute: typeof SignUpIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/task/': {
       id: '/task/'
       path: '/task'
       fullPath: '/task'
       preLoaderRoute: typeof TaskIndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/task/$id/edit': {
-      id: '/task/$id/edit'
-      path: '/task/$id/edit'
-      fullPath: '/task/$id/edit'
-      preLoaderRoute: typeof TaskIdEditImport
-      parentRoute: typeof rootRoute
-    }
-    '/task/$id/': {
-      id: '/task/$id/'
-      path: '/task/$id'
-      fullPath: '/task/$id'
-      preLoaderRoute: typeof TaskIdIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -79,47 +79,47 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/login': typeof LoginIndexRoute
+  '/sign-up': typeof SignUpIndexRoute
   '/task': typeof TaskIndexRoute
-  '/task/$id/edit': typeof TaskIdEditRoute
-  '/task/$id': typeof TaskIdIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/login': typeof LoginIndexRoute
+  '/sign-up': typeof SignUpIndexRoute
   '/task': typeof TaskIndexRoute
-  '/task/$id/edit': typeof TaskIdEditRoute
-  '/task/$id': typeof TaskIdIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/login/': typeof LoginIndexRoute
+  '/sign-up/': typeof SignUpIndexRoute
   '/task/': typeof TaskIndexRoute
-  '/task/$id/edit': typeof TaskIdEditRoute
-  '/task/$id/': typeof TaskIdIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/task' | '/task/$id/edit' | '/task/$id'
+  fullPaths: '/' | '/login' | '/sign-up' | '/task'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/task' | '/task/$id/edit' | '/task/$id'
-  id: '__root__' | '/' | '/task/' | '/task/$id/edit' | '/task/$id/'
+  to: '/' | '/login' | '/sign-up' | '/task'
+  id: '__root__' | '/' | '/login/' | '/sign-up/' | '/task/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LoginIndexRoute: typeof LoginIndexRoute
+  SignUpIndexRoute: typeof SignUpIndexRoute
   TaskIndexRoute: typeof TaskIndexRoute
-  TaskIdEditRoute: typeof TaskIdEditRoute
-  TaskIdIndexRoute: typeof TaskIdIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LoginIndexRoute: LoginIndexRoute,
+  SignUpIndexRoute: SignUpIndexRoute,
   TaskIndexRoute: TaskIndexRoute,
-  TaskIdEditRoute: TaskIdEditRoute,
-  TaskIdIndexRoute: TaskIdIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -133,22 +133,22 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/task/",
-        "/task/$id/edit",
-        "/task/$id/"
+        "/login/",
+        "/sign-up/",
+        "/task/"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
+    "/login/": {
+      "filePath": "login/index.tsx"
+    },
+    "/sign-up/": {
+      "filePath": "sign-up/index.tsx"
+    },
     "/task/": {
       "filePath": "task/index.tsx"
-    },
-    "/task/$id/edit": {
-      "filePath": "task/$id/edit.tsx"
-    },
-    "/task/$id/": {
-      "filePath": "task/$id/index.tsx"
     }
   }
 }
