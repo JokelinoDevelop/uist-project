@@ -76,13 +76,18 @@ export const selectSessionSchema = createSelectSchema(session).extend({
   expiresAt: z.string().datetime(),
 });
 
+export type ISession = z.infer<typeof selectSessionSchema>;
+
 export const signInSchema = selectUserSchema
   .pick({
     email: true,
   })
   .extend({
+    email: z.string().email("Invalid email address"),
     password: z.string().min(6, "Password must be at least 6 characters"),
   });
+
+export type ISignInUser = z.infer<typeof signInSchema>;
 
 export const signUpSchema = selectUserSchema
   .pick({
@@ -90,5 +95,9 @@ export const signUpSchema = selectUserSchema
     email: true,
   })
   .extend({
+    name: z.string().min(1, "Name is required"),
+    email: z.string().email("Invalid email address"),
     password: z.string().min(6, "Password must be at least 6 characters"),
   });
+
+export type ISignUpUser = z.infer<typeof signUpSchema>;

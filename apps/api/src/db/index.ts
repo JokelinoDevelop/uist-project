@@ -3,7 +3,7 @@ import { Pool } from "pg";
 
 import env from "@/env";
 
-import { account, session, user, verification } from "./schemas/auth-schema";
+import * as authSchemas from "./schemas/auth-schema";
 
 const pool = new Pool({
   connectionString: env.DATABASE_URL,
@@ -11,10 +11,7 @@ const pool = new Pool({
 const db = drizzle(pool, {
   logger: true,
   schema: {
-    user,
-    session,
-    account,
-    verification,
+    ...authSchemas,
   },
 });
 
